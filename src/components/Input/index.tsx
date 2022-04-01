@@ -1,9 +1,13 @@
+import { Container } from "./styles";
+
 export function Input() {
   return (
-    <div className="input">
+    <Container>
       <h1>Minhas Atividades</h1>
-      <input type="text" />
-      <button type="button">Adicionar</button>
-    </div>
+      <div className="input-info">
+        <input type="text" />
+        <button type="button">Adicionar</button>
+      </div>
+    </Container>
   );
 }

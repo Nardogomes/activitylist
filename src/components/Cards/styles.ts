@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Container = styled.div`
   max-width: 1120px;
-  margin: 0 auto;
+  margin: 1rem auto;
 
   display: flex;
   justify-content: space-around;
