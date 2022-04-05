@@ -6,17 +6,14 @@ export const Container = styled.div`
 
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   .input-info {
-    display: inline-block;
     width: 63rem;
     height: 2.5rem;
-    margin-top: 2rem;
+    margin-top: 1rem;
 
     input {
-      width: 50rem;
-      height: 100%;
+      width: 52rem;
       border: none;
       border-radius: 0.25rem;
       font-size: 1rem;
@@ -27,7 +24,7 @@ export const Container = styled.div`
     button {
       border: none;
       width: 10rem;
-      height: 2.4rem;
+      height: 2.2rem;
       margin-left: 0.5rem;
       border-radius: 0.25rem;
       font-size: 1rem;
