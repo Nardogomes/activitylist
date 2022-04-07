@@ -4,10 +4,25 @@ interface ListProviderProps {
   children: ReactNode;
 }
 
-export const ListContext = createContext<String[]>([]);
+interface ListContextData {
+  list: string[];
+  addItem: (item: string) => void;
+}
+
+export const ListContext = createContext<ListContextData>(
+  {} as ListContextData
+);
 
 export function ListProvider({ children }: ListProviderProps) {
-  const [list, setList] = useState(["Estudar", "Praticar"]);
+  const [list, setList] = useState<string[]>([]);
 
-  return <ListContext.Provider value={list}>{children}</ListContext.Provider>;
+  function addItem(item: string) {
+    setList([...list, item]);
+  }
+
+  return (
+    <ListContext.Provider value={{ list, addItem }}>
+      {children}
+    </ListContext.Provider>
+  );
 }

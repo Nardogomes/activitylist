@@ -5,7 +5,7 @@ import { FiTrash2 } from "react-icons/fi";
 import { Container } from "./styles";
 
 export function List() {
-  const list = useContext(ListContext);
+  const { list } = useContext(ListContext);
 
   return (
     <Container>

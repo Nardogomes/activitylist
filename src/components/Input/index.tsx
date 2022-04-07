@@ -1,16 +1,25 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ListContext } from "../../ListContext";
+
 import { Container } from "./styles";
 
 export function Input() {
+  const { addItem } = useContext(ListContext);
+
   const [activity, setActivity] = useState("");
-  console.log(activity);
+
+  function incrementItem() {
+    addItem(activity);
+  }
 
   return (
     <Container>
       <h1>Minhas Atividades</h1>
       <div className="input-info">
         <input type="text" onChange={(e) => setActivity(e.target.value)} />
-        <button type="button">Adicionar</button>
+        <button type="button" onClick={incrementItem}>
+          Adicionar
+        </button>
       </div>
     </Container>
   );
