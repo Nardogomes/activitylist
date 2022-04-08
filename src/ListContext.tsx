@@ -1,12 +1,17 @@
 import { createContext, useState, ReactNode } from "react";
 
+interface ListProps {
+  name: string;
+  status: boolean;
+}
+
 interface ListProviderProps {
   children: ReactNode;
 }
 
 interface ListContextData {
-  list: string[];
-  addItem: (item: string) => void;
+  list: ListProps[];
+  addItem: (item: ListProps) => void;
 }
 
 export const ListContext = createContext<ListContextData>(
@@ -14,10 +19,10 @@ export const ListContext = createContext<ListContextData>(
 );
 
 export function ListProvider({ children }: ListProviderProps) {
-  const [list, setList] = useState<string[]>([]);
+  const [list, setList] = useState<ListProps[]>([]);
 
-  function addItem(item: string) {
-    setList([...list, item]);
+  function addItem({ name, status }: ListProps) {
+    setList([...list, { name, status }]);
   }
 
   return (

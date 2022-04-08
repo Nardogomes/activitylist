@@ -13,8 +13,8 @@ export function List() {
         ? list.map((item, index) => (
             <div key={index}>
               <p>
-                <input type="checkbox" />
-                {item}
+                <input type="checkbox" checked={item.status} />
+                {item.name}
               </p>
               <button>
                 <FiTrash2 size={24} />
