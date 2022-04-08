@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode } from "react";
 
-interface ListProps {
+interface AtividadeProps {
   name: string;
   status: boolean;
 }
@@ -10,8 +10,9 @@ interface ListProviderProps {
 }
 
 interface ListContextData {
-  list: ListProps[];
-  addItem: (item: ListProps) => void;
+  list: AtividadeProps[];
+  addItem: (item: AtividadeProps) => void;
+  toggleStatus: (id: number) => void;
 }
 
 export const ListContext = createContext<ListContextData>(
@@ -19,14 +20,33 @@ export const ListContext = createContext<ListContextData>(
 );
 
 export function ListProvider({ children }: ListProviderProps) {
-  const [list, setList] = useState<ListProps[]>([]);
+  const [list, setList] = useState<AtividadeProps[]>([]);
 
-  function addItem({ name, status }: ListProps) {
-    setList([...list, { name, status }]);
+  function addItem({ name, status }: AtividadeProps) {
+    if (name !== "") {
+      setList([...list, { name, status }]);
+    } else {
+      alert("Informe uma atividade");
+    }
+  }
+
+  function toggleStatus(idAtividade: number) {
+    const newList = list.map((atividade, index) => {
+      if (idAtividade === index) {
+        return {
+          name: atividade.name,
+          status: !atividade.status,
+        };
+      }
+
+      return atividade;
+    });
+
+    setList(newList);
   }
 
   return (
-    <ListContext.Provider value={{ list, addItem }}>
+    <ListContext.Provider value={{ list, addItem, toggleStatus }}>
       {children}
     </ListContext.Provider>
   );
