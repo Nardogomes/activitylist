@@ -5,7 +5,7 @@ import { FiTrash2 } from "react-icons/fi";
 import { Container } from "./styles";
 
 export function List() {
-  const { list } = useContext(ListContext);
+  const { list, toggleStatus } = useContext(ListContext);
 
   return (
     <Container>
@@ -13,8 +13,15 @@ export function List() {
         ? list.map((item, index) => (
             <div key={index}>
               <p>
-                <input type="checkbox" checked={item.status} />
-                {item.name}
+                <input
+                  type="checkbox"
+                  checked={item.status}
+                  onClick={() => toggleStatus(index)}
+                  onChange={(e) => {}}
+                />
+                <span className={item.status ? "concluded" : ""}>
+                  {item.name}
+                </span>
               </p>
               <button>
                 <FiTrash2 size={24} />

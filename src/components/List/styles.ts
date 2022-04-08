@@ -14,8 +14,14 @@ export const Container = styled.div`
 
     background-color: rgba(50, 48, 89, 0.3);
 
-    p input {
-      margin-right: 0.5rem;
+    p {
+      input {
+        margin-right: 0.5rem;
+      }
+
+      span.concluded {
+        text-decoration: line-through;
+      }
     }
 
     button {
