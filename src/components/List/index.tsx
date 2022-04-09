@@ -5,7 +5,7 @@ import { FiTrash2 } from "react-icons/fi";
 import { Container } from "./styles";
 
 export function List() {
-  const { list, toggleStatus } = useContext(ListContext);
+  const { list, toggleStatus, removeItem } = useContext(ListContext);
 
   return (
     <Container>
@@ -23,7 +23,7 @@ export function List() {
                   {item.name}
                 </span>
               </p>
-              <button>
+              <button onClick={() => removeItem(index)}>
                 <FiTrash2 size={24} />
               </button>
             </div>
