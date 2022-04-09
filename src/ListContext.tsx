@@ -13,6 +13,7 @@ interface ListContextData {
   list: AtividadeProps[];
   addItem: (item: AtividadeProps) => void;
   toggleStatus: (id: number) => void;
+  removeItem: (id: number) => void;
 }
 
 export const ListContext = createContext<ListContextData>(
@@ -45,8 +46,17 @@ export function ListProvider({ children }: ListProviderProps) {
     setList(newList);
   }
 
+  function removeItem(idAtividade: number) {
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm("Quer realmente deletar este item?") === true) {
+      const newList = list.filter((_, index) => index !== idAtividade);
+
+      setList(newList);
+    }
+  }
+
   return (
-    <ListContext.Provider value={{ list, addItem, toggleStatus }}>
+    <ListContext.Provider value={{ list, addItem, toggleStatus, removeItem }}>
       {children}
     </ListContext.Provider>
   );
