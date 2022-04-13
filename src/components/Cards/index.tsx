@@ -1,23 +1,28 @@
+import { useEffect, useState } from 'react';
 import { Container } from './styles';
 
 export function Cards() {
+  const [text, setText] = useState('');
+  
+  useEffect(() => {
+    fetch('http://localhost:3333')
+      .then(response => response.json())
+      .then(info => setText(info.data))
+  } ,[])
+  
+  console.log(text);
+  
   return (
     <Container>
       <div className="card-left">
         <p>
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Deleniti veritatis facilis necessitatibus dolor!
-          Dicta doloribus tempora reprehenderit saepe odit?
-          At sint adipisci facilis possimus quos sunt quo nam error aut."
+          {!text ? "Carregando..." : text}
         </p>
         <span>Autor</span>
       </div>
       <div className="card-right">
         <p>
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Deleniti veritatis facilis necessitatibus dolor!
-          Dicta doloribus tempora reprehenderit saepe odit?
-          At sint adipisci facilis possimus quos sunt quo nam error aut."
+         {text}
         </p>
         <span>Autor</span>
       </div>

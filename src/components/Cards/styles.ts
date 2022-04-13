@@ -4,8 +4,9 @@ export const Container = styled.div`
   max-width: 1120px;
   margin: 1rem auto;
 
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10rem;
 
   & div {
     width: 30rem;
