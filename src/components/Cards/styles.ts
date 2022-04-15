@@ -4,22 +4,29 @@ export const Container = styled.div`
   max-width: 1120px;
   margin: 1rem auto;
 
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10rem;
+  h1 {
+    margin-left: 3rem;
+  }
 
-  & div {
-    width: 30rem;
-    height: 10rem;
-    margin-top: 2rem;
-    padding: 1rem;
-    border-radius: 0.25rem;
-    background-color: #323059;
-    color: #fff;
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10rem;
 
-    & span {
-      display: inline-block;
-      margin-top: 1rem;
+    & div {
+      width: 30rem;
+      height: 16rem;
+      margin-top: 2rem;
+      padding: 1rem;
+      border-radius: 0.25rem;
+      background-color: #323059;
+      color: #fff;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
     }
   }
 `;
