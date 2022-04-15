@@ -7,6 +7,7 @@ export const Container = styled.div`
   div {
     margin-top: 0.5rem;
     padding: 0.5rem;
+    border-radius: 0.25rem;
 
     display: flex;
     justify-content: space-between;
@@ -25,7 +26,11 @@ export const Container = styled.div`
     }
 
     button {
-      background-color: red;
+      border: none;
+      border-radius: 0.25rem;
+      background-color: #db342c;
+      color: #d5d5d5;
+
       transition: filter 0.3s;
 
       &:hover {
