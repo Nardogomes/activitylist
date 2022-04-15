@@ -16,23 +16,18 @@ export function Cards() {
   return (
     <Container>
       <h1>Para motivar</h1>
-
-      <div className="cards">
-        <div className="card-left">
-          {!text ? (
-            "Carregando..."
-          ) : (
+      {!text ? (
+        "Carregando..."
+      ) : (
+        <div className="cards">
+          <div className="card-left">
             <img src={text[random1]} alt={text[random1]} />
-          )}
-        </div>
-        <div className="card-right">
-          {!text ? (
-            "Carregando..."
-          ) : (
+          </div>
+          <div className="card-right">
             <img src={text[random2]} alt={text[random2]} />
-          )}
+          </div>
         </div>
-      </div>
+      )}
     </Container>
   );
 }
