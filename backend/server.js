@@ -1,22 +1,40 @@
-const express = require('express');
-const cors = require('cors');
-const app = express();
-const axios = require('axios');
+const express = require("express");
+const puppeteer = require("puppeteer");
+const cors = require("cors");
 
-const PORT = process.env.PORT || 3333;
+const app = express();
 
 app.use(cors());
 
-app.get('/', async (req,res) => {
+const PORT = process.env.PORT || 3333;
 
+app.get("/", async (request, response) => {
   try {
-    const { data } = await axios('https://positive-vibes-api.herokuapp.com/quotes/random')
-  
-    return res.json(data);
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto("https://www.pensador.com/frases_de_motivacao");
+
+    const content = await page.evaluate(() => {
+      const nodeList = document.querySelectorAll(".thought-card");
+
+      const listArray = { ...nodeList };
+
+      const list = [];
+      for (var item in listArray) {
+        list.push([listArray[item].dataset.src]);
+      }
+
+      return list;
+    });
+
+    await browser.close();
+
+    response.json(content);
   } catch (error) {
-    console.log(error);
+    throw console.error("Erro na requisição: ", error);
   }
-  
 });
 
-app.listen(PORT, () => console.log(`Servidor iniciado na posta ${PORT}`));
+app.listen(PORT, () => {
+  console.log(`Servidor iniciado na porta ${PORT}`);
+});
