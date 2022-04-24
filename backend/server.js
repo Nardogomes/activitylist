@@ -12,18 +12,20 @@ app.get("/", async (request, response) => {
   try {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    await page.goto("https://www.pensador.com/frases_de_motivacao", {
+    await page.goto("https://www.frasestop.com/frases-de-motivacao", {
       waitUntil: "load",
       timeout: 0,
     });
 
     const content = await page.evaluate(() => {
-      const nodeList = document.querySelectorAll(".thought-card");
+      const nodeList = document.querySelectorAll(
+        ".lista-frases .card-phrase .phrase-image a img"
+      );
 
       const listArray = { ...nodeList };
 
       const list = [];
-      for (var item in listArray) {
+      for (let item in listArray) {
         list.push([listArray[item].dataset.src]);
       }
 
