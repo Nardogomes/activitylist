@@ -8,7 +8,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3333;
 
-app.get("/", async (request, response) => {
+app.get("/api", async (request, response) => {
   try {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

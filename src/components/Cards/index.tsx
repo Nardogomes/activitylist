@@ -5,7 +5,7 @@ export function Cards() {
   const [text, setText] = useState<string[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3333")
+    fetch("/api")
       .then((response) => response.json())
       .then((data) => setText(data));
   }, []);
